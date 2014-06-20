@@ -12,6 +12,7 @@
 		06185354195472B500D99287 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 06185352195472B500D99287 /* Main.storyboard */; };
 		06185356195472B500D99287 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 06185355195472B500D99287 /* Images.xcassets */; };
 		06185362195472B500D99287 /* Swift_Picker_iOS8Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06185361195472B500D99287 /* Swift_Picker_iOS8Tests.swift */; };
+		0618536C195477C000D99287 /* countries.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0618536B195477C000D99287 /* countries.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,6 +35,7 @@
 		0618535B195472B500D99287 /* Swift-Picker-iOS8Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Swift-Picker-iOS8Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		06185360195472B500D99287 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		06185361195472B500D99287 /* Swift_Picker_iOS8Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Swift_Picker_iOS8Tests.swift; sourceTree = "<group>"; };
+		0618536B195477C000D99287 /* countries.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = countries.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +80,7 @@
 				0618534E195472B400D99287 /* AppDelegate.swift */,
 				06185350195472B400D99287 /* ViewController.swift */,
 				06185352195472B500D99287 /* Main.storyboard */,
+				0618536B195477C000D99287 /* countries.plist */,
 				06185355195472B500D99287 /* Images.xcassets */,
 				0618534C195472B400D99287 /* Supporting Files */,
 			);
@@ -191,6 +194,7 @@
 			files = (
 				06185354195472B500D99287 /* Main.storyboard in Resources */,
 				06185356195472B500D99287 /* Images.xcassets in Resources */,
+				0618536C195477C000D99287 /* countries.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -326,6 +330,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				INFOPLIST_FILE = "Swift-Picker-iOS8/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -337,6 +342,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				INFOPLIST_FILE = "Swift-Picker-iOS8/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
