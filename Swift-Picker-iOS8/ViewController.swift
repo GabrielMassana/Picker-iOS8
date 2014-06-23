@@ -9,12 +9,13 @@
 import UIKit
 
 
-class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, UIActionSheetDelegate {
+class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate /*, UIActionSheetDelegate*/ {
     
     var picker = UIPickerView()
     var pickerData  = NSArray()
     var countriesArray: NSMutableArray =  NSMutableArray()
-    var actionSheetPicker: UIActionSheet =  UIActionSheet()
+    //var actionSheetPicker: UIActionSheet =  UIActionSheet()
+    var actionView: UIView = UIView()
     
     @IBOutlet var countryLabel : UILabel = nil
     
@@ -22,9 +23,12 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
         super.viewDidLoad()
 
         picker.backgroundColor = UIColor.whiteColor()
-        actionSheetPicker.title = ""
-        actionSheetPicker.delegate = self
-
+        //actionSheetPicker.title = ""
+        //actionSheetPicker.delegate = self
+        
+        actionView.frame = CGRectMake(0, UIScreen.mainScreen().bounds.size.height, UIScreen.mainScreen().bounds.size.width, 260.0)
+        self.view.addSubview(actionView)
+        
         var filePath =  NSBundle.mainBundle().pathForResource("countries", ofType: "plist")
         countriesArray = NSMutableArray(contentsOfFile: filePath)
         countriesArray.insertObject("", atIndex: 0)
@@ -73,23 +77,48 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
         
         pickerDateToolbar.setItems(barItems, animated: true)
         
-        actionSheetPicker.addSubview(pickerDateToolbar)
-        actionSheetPicker.addSubview(picker)
-        actionSheetPicker.showInView(self.view)
-        actionSheetPicker.bounds = CGRectMake(0,0,320,464)
+//        actionSheetPicker.addSubview(pickerDateToolbar)
+//        actionSheetPicker.addSubview(picker)
+//        actionSheetPicker.showInView(self.view)
+//        actionSheetPicker.bounds = CGRectMake(0,0,320,464)
+        
+        actionView.addSubview(pickerDateToolbar)
+        actionView.addSubview(picker)
+        
+        
+        UIView.animateWithDuration(0.2, animations: {
+            
+            self.actionView.frame = CGRectMake(0, UIScreen.mainScreen().bounds.size.height - 260.0, UIScreen.mainScreen().bounds.size.width, 260.0)
+            
+            })
     }
 
 
     func cancelPickerSelectionButtonClicked(sender: UIBarButtonItem) {
         
-        actionSheetPicker.dismissWithClickedButtonIndex(0, animated: true)
+
         
-        for obj: AnyObject in actionSheetPicker.subviews {
-            if let view = obj as? UIView
-            {
-                view.removeFromSuperview()
-            }
-        }
+        //actionSheetPicker.dismissWithClickedButtonIndex(0, animated: true)
+        UIView.animateWithDuration(0.2, animations: {
+            
+            self.actionView.frame = CGRectMake(0, UIScreen.mainScreen().bounds.size.height, UIScreen.mainScreen().bounds.size.width, 260.0)
+            
+            }, completion: { _ in
+                for obj: AnyObject in self.actionView.subviews {
+                    if let view = obj as? UIView
+                    {
+                        view.removeFromSuperview()
+                    }
+                }
+            })
+        
+//        for obj: AnyObject in actionSheetPicker.subviews {
+//            if let view = obj as? UIView
+//            {
+//                view.removeFromSuperview()
+//            }
+//        }
+        
     }
     
     func countryDoneClicked(sender: UIBarButtonItem) {
@@ -101,14 +130,29 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
         if countryLabel.text == "No country" {
             countryLabel.text = ""
         }
-        actionSheetPicker.dismissWithClickedButtonIndex(0, animated: false)
         
-        for obj: AnyObject in actionSheetPicker.subviews {
-            if let view = obj as? UIView
-            {
-                view.removeFromSuperview()
-            }
-        }
+        //actionSheetPicker.dismissWithClickedButtonIndex(0, animated: false)
+        
+        UIView.animateWithDuration(0.2, animations: {
+            
+            self.actionView.frame = CGRectMake(0, UIScreen.mainScreen().bounds.size.height, UIScreen.mainScreen().bounds.size.width, 260.0)
+            
+            }, completion: { _ in
+                for obj: AnyObject in self.actionView.subviews {
+                    if let view = obj as? UIView
+                    {
+                        view.removeFromSuperview()
+                    }
+                }
+            })
+
+//        for obj: AnyObject in actionSheetPicker.subviews {
+//            if let view = obj as? UIView
+//            {
+//                view.removeFromSuperview()
+//            }
+//        }
+        
     }
     
     // MARK - Picker delegate
@@ -121,9 +165,13 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
         return 1
     }
     
-    func pickerView(_pickerView: UIPickerView!, titleForRow row: Int, forComponent component: Int) -> String! {
         
+    func pickerView(_pickerView: UIPickerView!, titleForRow row: Int, forComponent component: Int) -> String! {
+            
         return pickerData.objectAtIndex(row) as NSString
+            
     }
+        
+    
 }
 
